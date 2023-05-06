@@ -24,6 +24,7 @@
             </td>
         </tr>
     </table>
+    <P th:text="'（全' + ${employeelist.size} + '件）'"></p>
 </form>
     <a th:href="@{/employee/register}">新規従業員の登録</a>
     <script th:src="@{/js/employee/list.js}"></script>

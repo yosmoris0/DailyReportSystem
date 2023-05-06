@@ -93,8 +93,10 @@ public class EmployeeController {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         employee2.setUpdatedAt(timestamp);
         employee2.setName(employee.getName());
-        employee2.getAuthentication().setPassword(employee.getAuthentication().getPassword());
         employee2.getAuthentication().setRole(employee.getAuthentication().getRole());
+        if(!employee.getAuthentication().getPassword().equals("")) {
+        employee2.getAuthentication().setPassword(employee.getAuthentication().getPassword());
+      }
 
         // Employee登録
         service.saveEmployee(employee2);
