@@ -42,11 +42,11 @@ public class Employee {
     @Column(nullable = false)
     private Integer deleteFlag;
 
-    /** 登録日時 */    //Timestamp型でいける
+    /** 登録日時 */
     @Column(nullable = false)
     private Timestamp createdAt;
 
-    /** 更新日時 */    //Timestamp型でいける
+    /** 更新日時 */
     @Column(nullable = false)
     private Timestamp updatedAt;
 
