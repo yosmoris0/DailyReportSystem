@@ -67,6 +67,7 @@ public class ReportController {
 //            // エラーあり
 //            return getRegister(employee);
 //        }
+
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         report.setCreatedAt(timestamp);
         report.setUpdatedAt(timestamp);
@@ -103,6 +104,9 @@ public class ReportController {
 
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         report2.setUpdatedAt(timestamp);
+        report2.setReportDate(report.getReportDate());
+        report2.setTitle(report.getTitle());
+        report2.setContent(report.getContent());
 
         // Report登録
         service.saveReport(report2);
