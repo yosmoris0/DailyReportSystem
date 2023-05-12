@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>Daily Report System</title>
+    <link rel="stylesheet" th:href="@{/css/employee/detail.css}">
+</head>
+<body>
+    <h1>日報管理システム</h1>
+        <h4 th:text="'従業員管理　日報管理　' + ${employeename} + '　さん'"></h4>
+        <form method="post" th:action="@{/logout}">
+            <input type="submit" value="ログアウト">
+        </form><br>
+    <h2 th:text="'id:' + ${employee.id} + 'の従業員情報 詳細ページ'"></h2>
+    <form method="post" th:action="@{/employee/detail/{id}/(id=${employee.id})}" th:object="${employee}">
+
+    <table>
+        <tr>
+            <td>社員番号</td>
+            <td th:text="${employee.authentication.code}"></td>
+        </tr>
+        <tr>
+            <td>氏名</td>
+            <td th:text="${employee.name}"></td>
+        </tr>
+        <tr>
+            <td>権限</td>
+            <td th:text="${employee.authentication.role}"></td>
+        </tr>
+        <tr>
+            <td>登録日時</td>
+            <td th:text="${employee.createdAt}"></td>
+<!--★確認したい★
+            <td th:text="${#temporals.format(employee.createdAt, 'yyyy/MM/dd HH:mm:ss')}"></td>
+-->
+        </tr>
+        <tr>
+            <td>更新日時</td>
+　           <td th:text="${employee.updatedAt}"></td>
+<!--★確認したい★
+            <td th:text="${#temporals.format(employee.updatedAt, 'yyyy/MM/dd HH:mm:ss')}"></td>
+-->
+
+        </tr>
+    </table>
+
+        <br>
+        <a th:href="@{/employee/update/{id}/(id=${employee.id})}">この従業員情報を編集する</a>
+        <br>
+        <a th:href="@{/employee/list}">一覧に戻る</a>
+    </form>
+</body>
+</html>

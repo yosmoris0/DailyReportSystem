@@ -60,5 +60,4 @@ public class Report {
     /** 更新日時 */
     @Column(nullable = false)
     private Timestamp updatedAt;
-
-}
+    }
