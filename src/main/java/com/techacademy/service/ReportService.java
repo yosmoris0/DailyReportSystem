@@ -4,8 +4,9 @@ import java.util.List;
 import java.util.Set;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional; // 追加
+
+import com.techacademy.entity.Employee;
 import com.techacademy.entity.Report;
-import com.techacademy.repository.Employee;
 import com.techacademy.repository.ReportRepository;
 
 @Service
@@ -23,11 +24,11 @@ public class ReportService {
     }
 
     /** ログイン者の日報のみを検索して返す */
-//    public List<Report> getLoginReportList(employee) {
-//        // リポジトリのfindAllメソッドを呼び出す
-//        return reportRepository.findByEmployee(employee);
+    public List<Report> getLoginReportList(Employee employee) {
+        // リポジトリのfindAllメソッドを呼び出す
+        return reportRepository.findByEmployee(employee);
     }
-    
+
     /** Reportを1件検索して返す */
     public Report getReport(Integer id) {
         return reportRepository.findById(id).get();

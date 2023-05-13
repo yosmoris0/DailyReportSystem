@@ -12,6 +12,8 @@
             <input type="submit" value="ログアウト">
         </form><br>
 
+    <form method="post" th:action="@{/report/detail/{id}/(id=${report.id})}" th:object="${report}">
+
     <table>
         <tr>
             <td>氏名</td>
@@ -45,10 +47,10 @@
 
         </tr>
     </table>
-
         <br>
-        <a th:href="@{/report/update/{id}/(id=${employee.id})}">この従業員情報を編集する</a>
+        <a th:if="${employeeId} eq ${report.employee.id}" th:href="@{/report/update/{id}/(id=${report.id})}">この日報を編集する</a>
         <br>
         <a th:href="@{/report/list}">一覧に戻る</a>
+    </form><br>
 </body>
 </html>

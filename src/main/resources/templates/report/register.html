@@ -14,6 +14,10 @@
         </form><br>
     <h2>日報　新規登録ページ</h2>
     <form method="post" th:action="@{/report/register}" th:object="${report}">
+
+<!--         <input type="hidden" id="id" name="employeeId">
+ -->
+ 
         <label for="reportDate">日付</label><br>
         <input type="date" th:field=${report.reportDate} th:errorclass="err">
         <br>

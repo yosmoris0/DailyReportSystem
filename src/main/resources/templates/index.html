@@ -3,8 +3,35 @@
 <head>
     <meta charset="utf-8">
     <title>Daily Report System</title>
+    <link rel="stylesheet" th:href="@{/css/report/list.css}">
 </head>
 <body>
     <h1>日報管理システム</h1>
+    <h4 th:text="'従業員管理　日報管理　' + ${employeename} + '　さん'"></h4>
+        <form method="post" th:action="@{/logout}">
+            <input type="submit" value="ログアウト">
+        </form><br>
+    <h2>日報管理システムへようこそ</h2>
+    <h4>【自分の日報　一覧】</h4>
+
+    <table>
+        <tr>
+            <th>氏名</th>
+            <th>日付</th>
+            <th>タイトル</th>
+            <th>操作</th>
+
+        </tr>
+        <tr th:each="report : ${reportlist}">
+            <td th:text="${report.employee.name}"></td>
+            <td th:text="${report.reportDate}"></td>
+            <td th:text="${report.title}"></td>
+            <td>
+                <a th:href="@{/report/detail/{id}/(id=${employee.id})}">詳細を見る</a>
+            </td>
+        </tr>
+    </table>
+    <P th:text="'（全' + ${employeelist.size} + '件）'"></p>
+    <a th:href="@{/report/register}">新規日報の登録</a>
 </body>
 </html>

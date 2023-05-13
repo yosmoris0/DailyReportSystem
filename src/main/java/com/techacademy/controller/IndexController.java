@@ -23,9 +23,9 @@ public class IndexController {
     // list.htmlでログイン氏名を表示させるため、UserDetailをモデルに突っ込んで、getName()してemployeenameと命名
     public String getList(Model model,@AuthenticationPrincipal UserDetail userDetail) {
         model.addAttribute("employeename", userDetail.getEmployee().getName());
-        // 全件検索結果をModelに登録
-//        model.addAttribute("employeelist", service.findByEmployee(userDetail.getEmployee()));
+        // ログイン者の日報のみををModelに登録
+        model.addAttribute("employeelist", service.getLoginReportList(userDetail.getEmployee()));
         // user/list.htmlに画面遷移
-        return "/list";
+        return "/index";
     }
 }

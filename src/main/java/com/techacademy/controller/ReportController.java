@@ -44,9 +44,10 @@ public class ReportController {
     // detail.htmlでログイン氏名を表示させるため、UserDetailをモデルに突っ込んで、getName()してemployeenameと命名
     public String getDetail(@PathVariable("id") Integer id, Model model, @AuthenticationPrincipal UserDetail userDetail) {
         model.addAttribute("employeename", userDetail.getEmployee().getName());
+        model.addAttribute("employeeId", userDetail.getEmployee().getId());
         // Modelに登録
         model.addAttribute("report", service.getReport(id));
-        // User更新画面に遷移
+        // report詳細画面に遷移
         return "report/detail";
     }
 
@@ -55,6 +56,7 @@ public class ReportController {
     // register.htmlでログイン氏名を表示させるため、UserDetailをモデルに突っ込んで、getName()してemployeenameと命名
     public String getRegister(@ModelAttribute Report report, Model model, @AuthenticationPrincipal UserDetail userDetail) {
         model.addAttribute("employeename", userDetail.getEmployee().getName());
+//        model.addAttribute("employeeId", userDetail.getEmployee().getId());
 
         // Employee登録画面に遷移
         return "report/register";
@@ -71,7 +73,7 @@ public class ReportController {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         report.setCreatedAt(timestamp);
         report.setUpdatedAt(timestamp);
-//        report.setEmployeeId(userDetail.getEmployee().getId());
+//        report.addAttribute("employeeId", userDetail.getEmployee().getId());
 
         // Employee登録
         service.saveReport(report);

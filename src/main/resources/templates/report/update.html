@@ -14,6 +14,7 @@
         </form><br>
     <h2>日報　編集ページ</h2>
     <form method="post" th:action="@{/report/update}" th:object="${report}">
+
         <label for="reportDate">日付</label><br>
         <input type="date" th:field=${report.reportDate} th:errorclass="err">
         <br>
@@ -24,7 +25,7 @@
             <td>氏名</td>
         </tr>
         <tr>
-            <td th:text="${employeename}"></td>
+            <td th:text="${report.employee.name}"></td>
         </tr>
     </table>
         <br>
