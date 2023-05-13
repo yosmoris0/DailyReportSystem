@@ -24,7 +24,7 @@ public class IndexController {
     public String getList(Model model,@AuthenticationPrincipal UserDetail userDetail) {
         model.addAttribute("employeename", userDetail.getEmployee().getName());
         // ログイン者の日報のみををModelに登録
-        model.addAttribute("employeelist", service.getLoginReportList(userDetail.getEmployee()));
+        model.addAttribute("reportlist", service.getLoginReportList(userDetail.getEmployee()));
         // user/list.htmlに画面遷移
         return "/index";
     }

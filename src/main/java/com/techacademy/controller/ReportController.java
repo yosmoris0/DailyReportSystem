@@ -34,7 +34,7 @@ public class ReportController {
     public String getList(Model model,@AuthenticationPrincipal UserDetail userDetail) {
         model.addAttribute("employeename", userDetail.getEmployee().getName());
         // 全件検索結果をModelに登録
-        model.addAttribute("employeelist", service.getReportList());
+        model.addAttribute("reportlist", service.getReportList());
         // user/list.htmlに画面遷移
         return "report/list";
     }
@@ -73,7 +73,7 @@ public class ReportController {
         Timestamp timestamp = new Timestamp(System.currentTimeMillis());
         report.setCreatedAt(timestamp);
         report.setUpdatedAt(timestamp);
-//        report.addAttribute("employeeId", userDetail.getEmployee().getId());
+        report.setEmployee(userDetail.getEmployee());
 
         // Employee登録
         service.saveReport(report);

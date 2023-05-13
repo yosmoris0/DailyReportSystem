@@ -27,11 +27,11 @@
             <td th:text="${report.reportDate}"></td>
             <td th:text="${report.title}"></td>
             <td>
-                <a th:href="@{/report/detail/{id}/(id=${employee.id})}">詳細を見る</a>
+                <a th:href="@{/report/detail/{id}/(id=${report.id})}">詳細を見る</a>
             </td>
         </tr>
     </table>
-    <P th:text="'（全' + ${employeelist.size} + '件）'"></p>
+    <P th:text="'（全' + ${reportlist.size} + '件）'"></p>
     <a th:href="@{/report/register}">新規日報の登録</a>
 </body>
 </html>

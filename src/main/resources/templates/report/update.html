@@ -13,7 +13,7 @@
             <input type="submit" value="ログアウト">
         </form><br>
     <h2>日報　編集ページ</h2>
-    <form method="post" th:action="@{/report/update}" th:object="${report}">
+    <form method="post" th:action="@{/report/update/{id}/(id=${report.id})}" th:object="${report}">
 
         <label for="reportDate">日付</label><br>
         <input type="date" th:field=${report.reportDate} th:errorclass="err">
